@@ -1,0 +1,17 @@
+package com.xwj.jokexwj.utils;
+
+/**
+ * Created by xwjsd on 2016-02-12.
+ */
+public class Globals {
+    public static final String BASE_URL = "http://japi.juhe.cn/joke/";
+    public static final String APP_KEY = "02f1c17ebac4b536854695a87d5f428a";
+    public static final String CACHE = "sp_cache";
+    public static final String DB_JOKE_NAME = "DB_JOKE_NAME";
+    public static final String JOKE_TABLE_NAME = "JOKE_TABLE_NAME";
+    /**
+     * http://japi.juhe.cn/joke/content/text.from
+     * 请求参数：page=1&pagesize=20&key=02f1c17ebac4b536854695a87d5f428a
+     */
+    public static final String NEWEST_JOKES = "http://japi.juhe.cn/joke/content/text.from?page=1&pagesize=20&key=" + APP_KEY;
+}
