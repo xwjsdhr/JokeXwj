@@ -105,6 +105,7 @@ public class JokesPresenterImpl implements JokesPresenter {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Toast.makeText(mContext, "网络连接失败。", Toast.LENGTH_SHORT).show();
                         if (allJokes != null && allJokes.size() > 0) {
                             mJokeView.bindView(allJokes);
                         }

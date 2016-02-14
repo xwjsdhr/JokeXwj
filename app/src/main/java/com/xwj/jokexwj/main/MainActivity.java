@@ -3,6 +3,7 @@ package com.xwj.jokexwj.main;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -20,9 +21,12 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @InjectView(R.id.container_main)
     FrameLayout mContainer;
+    @InjectView(R.id.drawer)
+    DrawerLayout mDrawer;
 
     private MainPresenter mMainPresenter;
     private FragmentManager mManager;
+
 
     private String TAG = MainActivity.class.getSimpleName();
 
@@ -48,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
     private void initViews() {
         ButterKnife.inject(this);
         mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
     }
 
     @Override

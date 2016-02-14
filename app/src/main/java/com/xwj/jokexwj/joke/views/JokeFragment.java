@@ -55,11 +55,6 @@ public class JokeFragment extends Fragment implements JokeView, SwipeRefreshLayo
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
-//        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-//        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
-//        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_main_jokes);
-
         ((AppCompatActivity) this.getActivity()).setSupportActionBar(mToolbar);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -102,7 +97,7 @@ public class JokeFragment extends Fragment implements JokeView, SwipeRefreshLayo
 
     @Override
     public void onRefresh() {
-
+        mJokesPresenter.onRefresh();
     }
 
     @Override
