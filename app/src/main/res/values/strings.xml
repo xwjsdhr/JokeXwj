@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">JokeXwj</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">笑话大全</string>
+    <string name="action_settings">设置</string>
     <string name="loading">正在加载</string>
     <string name="loadingMore">点击加载更多</string>
+    <string name="str_joke">笑话</string>
+    <string name="str_funny_pics">趣图</string>
 </resources>

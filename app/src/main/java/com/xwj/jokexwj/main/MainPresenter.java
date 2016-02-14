@@ -1,13 +1,13 @@
 package com.xwj.jokexwj.main;
 
-import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 /**
  * Created by xwjsd on 2016-02-12.
  */
 public interface MainPresenter {
-    void onCreate(Bundle savedInstanceState);
+    void onCreate();
 
     void onResume();
 
@@ -17,5 +17,6 @@ public interface MainPresenter {
 
     boolean onLongClick(View v);
 
-    void onRefresh();
+    boolean onNavigationItemSelected(MenuItem item);
+
 }

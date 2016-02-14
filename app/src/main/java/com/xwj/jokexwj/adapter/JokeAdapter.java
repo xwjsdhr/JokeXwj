@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xwj.jokexwj.R;
-import com.xwj.jokexwj.main.MainView;
+import com.xwj.jokexwj.joke.views.JokeView;
 import com.xwj.jokexwj.model.Joke;
 
 import java.util.List;
@@ -23,12 +23,12 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<Joke> mJokes;
     private LayoutInflater mInflater;
-    private MainView mMainView;
+    private JokeView mJokeView;
 
-    public JokeAdapter(Context context, List<Joke> jokes) {
+    public JokeAdapter(JokeView jokeView, Context context, List<Joke> jokes) {
         mContext = context;
         mJokes = jokes;
-        mMainView = (MainView) context;
+        mJokeView = jokeView;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -36,7 +36,7 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTER) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer, parent, false);
-            return new FooterViewHolder(mMainView, v);
+            return new FooterViewHolder(mJokeView, v);
         } else if (viewType == TYPE_ITEM) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_joke, parent, false);
             return new JokeViewHolder(v);

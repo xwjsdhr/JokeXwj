@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.xwj.jokexwj.R;
 import com.xwj.jokexwj.adapter.presenter.FooterPresenter;
 import com.xwj.jokexwj.adapter.presenter.FooterPresenterImpl;
-import com.xwj.jokexwj.main.MainView;
+import com.xwj.jokexwj.joke.views.JokeView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -31,10 +31,10 @@ public class FooterViewHolder extends RecyclerView.ViewHolder implements FooterV
 
     private FooterPresenter mFooterPresenter;
 
-    public FooterViewHolder(MainView mainView, View itemView) {
+    public FooterViewHolder(JokeView jokeView, View itemView) {
         super(itemView);
         ButterKnife.inject(this, itemView);
-        mFooterPresenter = new FooterPresenterImpl(mainView, this);
+        mFooterPresenter = new FooterPresenterImpl(jokeView, this);
         itemView.setOnClickListener(this);
     }
 

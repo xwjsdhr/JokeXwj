@@ -1,14 +1,13 @@
 package com.xwj.jokexwj.adapter.presenter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 
 import com.google.gson.Gson;
 import com.xwj.jokexwj.adapter.FooterView;
 import com.xwj.jokexwj.api.NetClient;
 import com.xwj.jokexwj.dao.JokesDao;
-import com.xwj.jokexwj.main.MainView;
+import com.xwj.jokexwj.joke.views.JokeView;
 import com.xwj.jokexwj.model.JokeData;
 
 import java.io.IOException;
@@ -23,24 +22,24 @@ import okhttp3.Response;
 public class FooterPresenterImpl implements FooterPresenter {
     private FooterView mFooterView;
     private NetClient mNetClient;
-    private MainView mMainView;
+    private JokeView mJokeView;
     private Activity activity;
     private JokesDao mDao;
 
 
-    public FooterPresenterImpl(MainView mainView, FooterView footerView) {
+    public FooterPresenterImpl(JokeView jokeView, FooterView footerView) {
         mFooterView = footerView;
-        mMainView = mainView;
-        activity = (Activity) mainView;
+        mJokeView = jokeView;
+        activity = (Activity) jokeView.gainContext();
         mNetClient = new NetClient();
-        mDao = new JokesDao((Context) mainView);
+        mDao = new JokesDao(jokeView.gainContext());
     }
 
     @Override
     public void onClick(View view) {
         mFooterView.showLoadingMore();
         mFooterView.unableClick();
-        mNetClient.getMoreNewestJokes((mMainView.getJokeCount() / 20) + 1, new Callback() {
+        mNetClient.getMoreNewestJokes((mJokeView.getJokeCount() / 20) + 1, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -53,7 +52,7 @@ public class FooterPresenterImpl implements FooterPresenter {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mMainView.bindMore(data.result.data);
+                        mJokeView.bindMore(data.result.data);
                         mFooterView.hideLoadingMore();
                         mFooterView.enableClick();
                     }
