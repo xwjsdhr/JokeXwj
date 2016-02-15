@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import com.xwj.jokexwj.R;
 import com.xwj.jokexwj.adapter.views.impl.FooterViewHolder;
 import com.xwj.jokexwj.adapter.views.impl.FunnyPicViewHolder;
-import com.xwj.jokexwj.adapter.views.impl.JokeViewHolder;
 import com.xwj.jokexwj.funnypic.views.FunnyPicView;
 import com.xwj.jokexwj.model.funnypic.FunnyPic;
 
@@ -40,7 +39,7 @@ public class FunnyPicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             return new FooterViewHolder(mFunnyPicView, v);
         } else if (viewType == TYPE_ITEM) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.funny_pic_item, parent, false);
-            return new JokeViewHolder(v);
+            return new FunnyPicViewHolder(mContext, v);
         }
         return null;
     }

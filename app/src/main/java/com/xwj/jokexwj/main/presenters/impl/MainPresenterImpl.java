@@ -53,9 +53,11 @@ public class MainPresenterImpl implements MainPresenter {
         switch (item.getItemId()) {
             case R.id.jokes:
                 mMainView.addJokesFragment();
+                mMainView.closeDrawer();
                 break;
             case R.id.funny_pics:
                 mMainView.addFunnyPicsFragment();
+                mMainView.closeDrawer();
                 break;
         }
         return true;

@@ -11,4 +11,6 @@ public class Globals {
     public static final String JOKE_TABLE_NAME = "JOKE_TABLE_NAME";
     public static final String NEWEST_JOKES = "http://japi.juhe.cn/joke/content/text.from?page=1&pagesize=20&key=" + APP_KEY;
     public static final String NEWEST_FUNNY_PICS = "http://japi.juhe.cn/joke/img/text.from?page=1&pagesize=20&key=" + APP_KEY;
+    public static final String DB_PICS_NAME = "DB_PICS_NAME";
+    public static final String PICS_TABLE_NAME = "PICS_TABLE_NAME";
 }

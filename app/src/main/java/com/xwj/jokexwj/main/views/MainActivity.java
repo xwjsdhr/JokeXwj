@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.xwj.jokexwj.R;
+import com.xwj.jokexwj.funnypic.views.FunnyPicsFragment;
 import com.xwj.jokexwj.joke.views.JokeFragment;
 import com.xwj.jokexwj.main.presenters.MainPresenter;
 import com.xwj.jokexwj.main.presenters.impl.MainPresenterImpl;
@@ -75,6 +76,15 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @Override
     public void addFunnyPicsFragment() {
+        mManager.beginTransaction()
+                .replace(R.id.container_main,
+                        new FunnyPicsFragment(),
+                        FunnyPicsFragment.class.getSimpleName())
+                .commit();
+    }
 
+    @Override
+    public void closeDrawer() {
+        mDrawer.closeDrawers();
     }
 }

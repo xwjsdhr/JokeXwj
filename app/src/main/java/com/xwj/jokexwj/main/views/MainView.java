@@ -8,4 +8,6 @@ public interface MainView {
     void addJokesFragment();
 
     void addFunnyPicsFragment();
+
+    void closeDrawer();
 }
