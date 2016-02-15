@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.xwj.jokexwj.adapter.FooterView;
+import com.xwj.jokexwj.adapter.views.FooterView;
 import com.xwj.jokexwj.api.NetClient;
 import com.xwj.jokexwj.dao.JokesDao;
+import com.xwj.jokexwj.funnypic.views.FunnyPicView;
 import com.xwj.jokexwj.joke.views.JokeView;
-import com.xwj.jokexwj.model.JokeData;
+import com.xwj.jokexwj.model.joke.JokeData;
 
 import java.io.IOException;
 
@@ -25,6 +26,7 @@ public class FooterPresenterImpl implements FooterPresenter {
     private JokeView mJokeView;
     private Activity activity;
     private JokesDao mDao;
+    private FunnyPicView mFunnyPicView;
 
 
     public FooterPresenterImpl(JokeView jokeView, FooterView footerView) {
@@ -33,6 +35,14 @@ public class FooterPresenterImpl implements FooterPresenter {
         activity = (Activity) jokeView.gainContext();
         mNetClient = new NetClient();
         mDao = new JokesDao(jokeView.gainContext());
+    }
+
+    public FooterPresenterImpl(FunnyPicView funnyPicView, FooterView footerView) {
+        mFooterView = footerView;
+        mFunnyPicView = funnyPicView;
+        activity = (Activity) funnyPicView.gainContext();
+        mNetClient = new NetClient();
+        mDao = new JokesDao(funnyPicView.gainContext());
     }
 
     @Override
@@ -48,16 +58,21 @@ public class FooterPresenterImpl implements FooterPresenter {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Gson gson = new Gson();
-                final JokeData data = gson.fromJson(response.body().string(), JokeData.class);
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mJokeView.bindMore(data.result.data);
-                        mFooterView.hideLoadingMore();
-                        mFooterView.enableClick();
-                    }
-                });
-                mDao.insertJokeList(data.result.data);
+                if (mFunnyPicView != null) {
+
+                } else if (mJokeView != null) {
+                    final JokeData data = gson.fromJson(response.body().string(), JokeData.class);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mJokeView.bindMore(data.result.data);
+                            mFooterView.hideLoadingMore();
+                            mFooterView.enableClick();
+                        }
+                    });
+                    mDao.insertJokeList(data.result.data);
+                }
+
             }
         });
     }

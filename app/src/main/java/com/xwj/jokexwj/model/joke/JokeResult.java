@@ -1,4 +1,4 @@
-package com.xwj.jokexwj.model;
+package com.xwj.jokexwj.model.joke;
 
 import java.util.List;
 

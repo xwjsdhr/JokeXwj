@@ -1,4 +1,4 @@
-package com.xwj.jokexwj.main;
+package com.xwj.jokexwj.main.views;
 
 /**
  * Created by xwjsd on 2016-02-12.

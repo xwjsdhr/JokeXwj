@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import com.xwj.jokexwj.model.Joke;
+import com.xwj.jokexwj.model.joke.Joke;
 import com.xwj.jokexwj.utils.Globals;
 
 import java.util.ArrayList;

@@ -1,11 +1,12 @@
-package com.xwj.jokexwj.adapter;
+package com.xwj.jokexwj.adapter.views.impl;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.xwj.jokexwj.R;
-import com.xwj.jokexwj.model.Joke;
+import com.xwj.jokexwj.adapter.views.JokeItemView;
+import com.xwj.jokexwj.model.joke.Joke;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -30,5 +31,13 @@ public class JokeViewHolder extends RecyclerView.ViewHolder implements JokeItemV
     public void bindView(Joke joke) {
         mTvContent.setText(joke.content);
         mTvTime.setText(joke.updatetime);
+    }
+
+    @Override
+    public void showProgress() {
+    }
+
+    @Override
+    public void hideProgress() {
     }
 }

@@ -2,7 +2,7 @@ package com.xwj.jokexwj.dao;
 
 import android.content.Context;
 
-import com.xwj.jokexwj.model.Joke;
+import com.xwj.jokexwj.model.joke.Joke;
 
 import java.util.List;
 

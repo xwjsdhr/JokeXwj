@@ -1,4 +1,4 @@
-package com.xwj.jokexwj.model;
+package com.xwj.jokexwj.model.joke;
 
 /**
  * Created by xwjsd on 2016-02-12.

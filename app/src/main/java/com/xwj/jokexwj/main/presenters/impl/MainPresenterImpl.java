@@ -1,13 +1,13 @@
-package com.xwj.jokexwj.main;
+package com.xwj.jokexwj.main.presenters.impl;
 
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.xwj.jokexwj.R;
-import com.xwj.jokexwj.api.NetClient;
-import com.xwj.jokexwj.dao.JokesDao;
+import com.xwj.jokexwj.main.views.MainActivity;
+import com.xwj.jokexwj.main.presenters.MainPresenter;
+import com.xwj.jokexwj.main.views.MainView;
 
 /**
  * Created by xwjsd on 2016-02-12.
@@ -16,18 +16,10 @@ public class MainPresenterImpl implements MainPresenter {
 
     private static final String TAG = MainPresenterImpl.class.getSimpleName();
     private MainView mMainView;
-    private Context mContext;
-    private NetClient mNetClient;
-    private Gson mGson;
-    private JokesDao mJokesDao;
     MainActivity activity;
 
     public MainPresenterImpl(Context context, MainView mainView) {
-        mContext = context;
         mMainView = mainView;
-        mNetClient = new NetClient();
-        mGson = new Gson();
-        mJokesDao = new JokesDao(context);
         activity = (MainActivity) mainView;
     }
 

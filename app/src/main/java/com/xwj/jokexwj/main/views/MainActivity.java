@@ -1,4 +1,4 @@
-package com.xwj.jokexwj.main;
+package com.xwj.jokexwj.main.views;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 
 import com.xwj.jokexwj.R;
 import com.xwj.jokexwj.joke.views.JokeFragment;
+import com.xwj.jokexwj.main.presenters.MainPresenter;
+import com.xwj.jokexwj.main.presenters.impl.MainPresenterImpl;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @InjectView(R.id.nav_main)
     NavigationView mNavigationView;
-
     @InjectView(R.id.container_main)
     FrameLayout mContainer;
     @InjectView(R.id.drawer)
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     private MainPresenter mMainPresenter;
     private FragmentManager mManager;
-
 
     private String TAG = MainActivity.class.getSimpleName();
 

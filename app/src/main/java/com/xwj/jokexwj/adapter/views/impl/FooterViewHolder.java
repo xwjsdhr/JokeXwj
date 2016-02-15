@@ -1,4 +1,4 @@
-package com.xwj.jokexwj.adapter;
+package com.xwj.jokexwj.adapter.views.impl;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.xwj.jokexwj.R;
 import com.xwj.jokexwj.adapter.presenter.FooterPresenter;
 import com.xwj.jokexwj.adapter.presenter.FooterPresenterImpl;
+import com.xwj.jokexwj.adapter.views.FooterView;
+import com.xwj.jokexwj.funnypic.views.FunnyPicView;
 import com.xwj.jokexwj.joke.views.JokeView;
 
 import butterknife.ButterKnife;
@@ -35,6 +37,13 @@ public class FooterViewHolder extends RecyclerView.ViewHolder implements FooterV
         super(itemView);
         ButterKnife.inject(this, itemView);
         mFooterPresenter = new FooterPresenterImpl(jokeView, this);
+        itemView.setOnClickListener(this);
+    }
+
+    public FooterViewHolder(FunnyPicView funnyPicView, View itemView) {
+        super(itemView);
+        ButterKnife.inject(this, itemView);
+        mFooterPresenter = new FooterPresenterImpl(funnyPicView, this);
         itemView.setOnClickListener(this);
     }
 
