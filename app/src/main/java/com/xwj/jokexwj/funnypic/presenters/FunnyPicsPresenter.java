@@ -8,4 +8,6 @@ import com.xwj.jokexwj.BasePresenter;
 public interface FunnyPicsPresenter extends BasePresenter {
 
     void onRefresh();
+
+    void onViewCreated();
 }

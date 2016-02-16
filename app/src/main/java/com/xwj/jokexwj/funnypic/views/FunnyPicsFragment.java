@@ -74,13 +74,13 @@ public class FunnyPicsFragment extends Fragment implements FunnyPicView, SwipeRe
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mFunnyPicAdapter);
-
+        mFunnyPicsPresenter.onViewCreated();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mFunnyPicsPresenter.onResume();
+        //mFunnyPicsPresenter.onResume();
     }
 
     @Override
@@ -115,6 +115,17 @@ public class FunnyPicsFragment extends Fragment implements FunnyPicView, SwipeRe
     @Override
     public Context gainContext() {
         return this.getContext();
+    }
+
+    @Override
+    public void bindMore(List<FunnyPic> list) {
+        funnyPicList.addAll(list);
+        mFunnyPicAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getFunnyPicCount() {
+        return funnyPicList.size();
     }
 
     @Override

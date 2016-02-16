@@ -9,6 +9,7 @@ import com.xwj.jokexwj.api.NetClient;
 import com.xwj.jokexwj.dao.JokesDao;
 import com.xwj.jokexwj.funnypic.views.FunnyPicView;
 import com.xwj.jokexwj.joke.views.JokeView;
+import com.xwj.jokexwj.model.funnypic.FunnyPicData;
 import com.xwj.jokexwj.model.joke.JokeData;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class FooterPresenterImpl implements FooterPresenter {
     private Activity activity;
     private JokesDao mDao;
     private FunnyPicView mFunnyPicView;
+    private Gson mGson;
 
 
     public FooterPresenterImpl(JokeView jokeView, FooterView footerView) {
@@ -35,6 +37,7 @@ public class FooterPresenterImpl implements FooterPresenter {
         activity = (Activity) jokeView.gainContext();
         mNetClient = new NetClient();
         mDao = new JokesDao(jokeView.gainContext());
+        mGson = new Gson();
     }
 
     public FooterPresenterImpl(FunnyPicView funnyPicView, FooterView footerView) {
@@ -43,25 +46,46 @@ public class FooterPresenterImpl implements FooterPresenter {
         activity = (Activity) funnyPicView.gainContext();
         mNetClient = new NetClient();
         mDao = new JokesDao(funnyPicView.gainContext());
+        mGson = new Gson();
     }
 
     @Override
     public void onClick(View view) {
         mFooterView.showLoadingMore();
         mFooterView.unableClick();
-        mNetClient.getMoreNewestJokes((mJokeView.getJokeCount() / 20) + 1, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
 
-            }
+        if (mFunnyPicView != null) {
+            int pagePic = (mFunnyPicView.getFunnyPicCount() / 5) + 1;
+            mNetClient.getMoreNewestFunnyPic(pagePic, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Gson gson = new Gson();
-                if (mFunnyPicView != null) {
+                }
 
-                } else if (mJokeView != null) {
-                    final JokeData data = gson.fromJson(response.body().string(), JokeData.class);
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    final FunnyPicData funnyPicsdata = mGson.fromJson(response.body().string(), FunnyPicData.class);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mFunnyPicView.bindMore(funnyPicsdata.result.data);
+                            mFooterView.hideLoadingMore();
+                            mFooterView.enableClick();
+                        }
+                    });
+                }
+            });
+        } else {
+            int page1 = (mJokeView.getJokeCount() / 20) + 1;
+            mNetClient.getMoreNewestJokes(page1, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    final JokeData data = mGson.fromJson(response.body().string(), JokeData.class);
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -70,11 +94,8 @@ public class FooterPresenterImpl implements FooterPresenter {
                             mFooterView.enableClick();
                         }
                     });
-                    mDao.insertJokeList(data.result.data);
                 }
-
-            }
-        });
+            });
+        }
     }
-
 }

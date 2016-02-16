@@ -8,4 +8,5 @@ import com.xwj.jokexwj.views.BaseView;
  */
 public interface PicShowView extends BaseView<FunnyPic> {
 
+    void finishActivity();
 }

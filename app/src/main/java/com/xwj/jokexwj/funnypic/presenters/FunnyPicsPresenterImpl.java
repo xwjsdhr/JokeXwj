@@ -31,8 +31,7 @@ public class FunnyPicsPresenterImpl implements FunnyPicsPresenter {
 
     @Override
     public void onResume() {
-        mFunnyPicView.showProgress();
-        getNewestFunnyPics();
+
     }
 
     private void getNewestFunnyPics() {
@@ -69,5 +68,11 @@ public class FunnyPicsPresenterImpl implements FunnyPicsPresenter {
     @Override
     public void onRefresh() {
         this.getNewestFunnyPics();
+    }
+
+    @Override
+    public void onViewCreated() {
+        mFunnyPicView.showProgress();
+        getNewestFunnyPics();
     }
 }

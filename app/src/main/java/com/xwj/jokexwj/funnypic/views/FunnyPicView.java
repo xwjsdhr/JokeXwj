@@ -12,4 +12,8 @@ import java.util.List;
  */
 public interface FunnyPicView extends BaseView<List<FunnyPic>> {
     Context gainContext();
+
+    void bindMore(List<FunnyPic> list);
+
+    int getFunnyPicCount();
 }

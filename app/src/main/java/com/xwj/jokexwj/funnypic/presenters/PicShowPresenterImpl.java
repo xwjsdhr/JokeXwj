@@ -42,7 +42,7 @@ public class PicShowPresenterImpl implements PicShowPresenter {
 
     @Override
     public void onClick(View view) {
-
+        mPicShowView.finishActivity();
     }
 
     @Override
