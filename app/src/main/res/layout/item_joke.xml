@@ -28,8 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_content"
-            android:gravity="bottom|end"
-            android:singleLine="true" />
+            android:gravity="bottom"
+            android:padding="5dp"
+            android:textSize="12sp"
+            android:singleLine="true"
+            android:textColor="@color/ColorContentText" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

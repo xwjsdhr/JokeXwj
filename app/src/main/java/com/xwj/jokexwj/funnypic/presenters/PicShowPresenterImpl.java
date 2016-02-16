@@ -3,8 +3,13 @@ package com.xwj.jokexwj.funnypic.presenters;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
+import com.xwj.jokexwj.R;
 import com.xwj.jokexwj.funnypic.views.PicShowView;
+import com.xwj.jokexwj.interactors.DownLoadListener;
+import com.xwj.jokexwj.interactors.DownloadImageInteractor;
+import com.xwj.jokexwj.interactors.impl.DownloadImageInteratorImpl;
 import com.xwj.jokexwj.model.funnypic.FunnyPic;
 import com.xwj.jokexwj.utils.Globals;
 
@@ -15,10 +20,12 @@ public class PicShowPresenterImpl implements PicShowPresenter {
 
     private Context mContext;
     private PicShowView mPicShowView;
+    private DownloadImageInteractor mDownloadImageInteractor;
 
     public PicShowPresenterImpl(Context context, PicShowView picShowView) {
         mPicShowView = picShowView;
         mContext = context;
+        mDownloadImageInteractor = new DownloadImageInteratorImpl(context);
     }
 
     @Override
@@ -42,7 +49,22 @@ public class PicShowPresenterImpl implements PicShowPresenter {
 
     @Override
     public void onClick(View view) {
-        mPicShowView.finishActivity();
+        int id = view.getId();
+        if (id == R.id.fab_download) {
+            mDownloadImageInteractor.downLoadImage(getFromIntent(), new DownLoadListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(mContext, R.string.download_success, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailed() {
+
+                }
+            });
+        } else {
+            mPicShowView.finishActivity();
+        }
     }
 
     @Override

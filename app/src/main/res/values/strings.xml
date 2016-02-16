@@ -6,4 +6,5 @@
     <string name="str_joke">笑话</string>
     <string name="str_funny_pics">趣图</string>
     <string name="show_pic">图片显示</string>
+    <string name="download_success">下载成功</string>
 </resources>

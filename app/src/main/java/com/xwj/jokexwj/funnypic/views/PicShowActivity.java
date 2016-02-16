@@ -1,6 +1,7 @@
 package com.xwj.jokexwj.funnypic.views;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -31,6 +32,9 @@ public class PicShowActivity extends AppCompatActivity implements PicShowView, V
     @InjectView(R.id.pb_pic_show)
     ProgressBar mProgressBar;
 
+    @InjectView(R.id.fab_download)
+    FloatingActionButton mFabDownLoad;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,7 @@ public class PicShowActivity extends AppCompatActivity implements PicShowView, V
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         mToolbar.setNavigationOnClickListener(this);
+        mFabDownLoad.setOnClickListener(this);
     }
 
     @Override
