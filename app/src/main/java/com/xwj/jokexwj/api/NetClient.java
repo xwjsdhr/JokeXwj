@@ -58,7 +58,7 @@ public class NetClient {
             public void run() {
                 HttpUrl httpUrl = HttpUrl.parse(Globals.BASE_URL + "img/text.from").newBuilder()
                         .addQueryParameter("page", "1")
-                        .addQueryParameter("pagesize", "20")
+                        .addQueryParameter("pagesize", "5")
                         .addQueryParameter("key", Globals.APP_KEY)
                         .build();
                 Request request = new Request.Builder().url(httpUrl).build();
@@ -74,7 +74,7 @@ public class NetClient {
             public void run() {
                 HttpUrl httpUrl = HttpUrl.parse(Globals.BASE_URL + "img/text.from").newBuilder()
                         .addQueryParameter("page", String.valueOf(page))
-                        .addQueryParameter("pagesize", "20")
+                        .addQueryParameter("pagesize", "5")
                         .addQueryParameter("key", Globals.APP_KEY)
                         .build();
                 Request request = new Request.Builder().url(httpUrl).build();

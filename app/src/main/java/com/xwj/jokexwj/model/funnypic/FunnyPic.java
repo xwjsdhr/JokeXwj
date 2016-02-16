@@ -1,9 +1,11 @@
 package com.xwj.jokexwj.model.funnypic;
 
+import java.io.Serializable;
+
 /**
  * Created by xwjsd on 2016-02-15.
  */
-public class FunnyPic {
+public class FunnyPic implements Serializable {
     public String content;
     public String hashId;
     public int unixtime;

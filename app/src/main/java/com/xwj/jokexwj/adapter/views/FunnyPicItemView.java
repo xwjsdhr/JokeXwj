@@ -6,6 +6,7 @@ import com.xwj.jokexwj.views.BaseView;
 /**
  * Created by xwjsd on 2016-02-15.
  */
-public interface FunnyPicItemView  extends BaseView<FunnyPic>{
+public interface FunnyPicItemView extends BaseView<FunnyPic> {
 
+    FunnyPic getFunnyPic();
 }

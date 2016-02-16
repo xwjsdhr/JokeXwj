@@ -2,6 +2,7 @@ package com.xwj.jokexwj.funnypic.model.impl;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.MalformedJsonException;
 
 import com.google.gson.Gson;
 import com.xwj.jokexwj.api.NetClient;
@@ -51,14 +52,24 @@ public class FunnyPicsModelImpl implements FunnyPicsModel {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                final FunnyPicData data = mGson.fromJson(response.body().string(), FunnyPicData.class);
-                mActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        listener.onSuccess(data.result.data);
-                    }
-                });
-                mFunnyPicDao.insertPicList(data.result.data);
+                try {
+                    final FunnyPicData data = mGson.fromJson(response.body().string(), FunnyPicData.class);
+                    mActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onSuccess(data.result.data);
+                        }
+                    });
+                    mFunnyPicDao.insertPicList(data.result.data);
+                } catch (MalformedJsonException e) {
+                    final List<FunnyPic> allFunnyPics = mFunnyPicDao.getAllFunnyPics();
+                    mActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onSuccess(allFunnyPics);
+                        }
+                    });
+                }
             }
         });
     }

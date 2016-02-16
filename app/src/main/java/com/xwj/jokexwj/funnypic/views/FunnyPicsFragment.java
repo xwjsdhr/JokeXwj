@@ -85,6 +85,7 @@ public class FunnyPicsFragment extends Fragment implements FunnyPicView, SwipeRe
 
     @Override
     public void bindView(List<FunnyPic> funnyPics) {
+        funnyPicList.clear();
         funnyPicList.addAll(funnyPics);
         mFunnyPicAdapter.notifyDataSetChanged();
     }
